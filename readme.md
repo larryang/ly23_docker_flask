@@ -1,11 +1,11 @@
 # Project Setup
 
-[![Production Workflow](https://github.com/larryang/ly_23_docker_flask/actions/workflows/prod.yml/badge.svg)](https://github.com/larryang/ly_docker_flask/actions/workflows/prod.yml)
+[![Production Workflow](https://github.com/larryang/ly23_docker_flask/actions/workflows/prod.yml/badge.svg)](https://github.com/larryang/ly_docker_flask/actions/workflows/prod.yml)
 
 * [Production Deployment](https://ly23-prod.herokuapp.com/)
 
 
-[![Development Workflow](https://github.com/kaw393939/docker_flask/actions/workflows/dev.yml/badge.svg)](https://github.com/larrayng/ly_docker_flask/actions/workflows/dev.yml)
+[![Development Workflow](https://github.com/larryang/ly23_docker_flask/actions/workflows/dev.yml/badge.svg)](https://github.com/larryang/ly_docker_flask/actions/workflows/dev.yml)
 
 * [Developmental Deployment](https://ly23-dev.herokuapp.com/)
 
@@ -15,7 +15,7 @@ When creating a pull request to merge a branch to master, GitHub will deploy to 
 
 ## Running Locally
 
-1. To Build with docker compose:
+1. To build with docker compose:
    docker compose up --build
 2. To run tests, Lint, and Coverage report use this command: pytest --pylint --cov
 
