@@ -1,11 +1,11 @@
 # Project Setup
 
-[![Production Workflow](https://github.com/larryang/ly23_docker_flask/actions/workflows/prod.yml/badge.svg)](https://github.com/larryang/ly_docker_flask/actions/workflows/prod.yml)
+[![Production Workflow](https://github.com/larryang/ly23_docker_flask/actions/workflows/prod.yml/badge.svg)](https://github.com/larryang/ly23_docker_flask/actions/workflows/prod.yml)
 
 * [Production Deployment](https://ly23-prod.herokuapp.com/)
 
 
-[![Development Workflow](https://github.com/larryang/ly23_docker_flask/actions/workflows/dev.yml/badge.svg)](https://github.com/larryang/ly_docker_flask/actions/workflows/dev.yml)
+[![Development Workflow](https://github.com/larryang/ly23_docker_flask/actions/workflows/dev.yml/badge.svg)](https://github.com/larryang/ly23_docker_flask/actions/workflows/dev.yml)
 
 * [Developmental Deployment](https://ly23-dev.herokuapp.com/)
 
