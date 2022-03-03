@@ -17,7 +17,7 @@ When creating a pull request to merge a branch to master, GitHub will deploy to 
 
 1. To build with docker compose:
    docker compose up --build
-2. To run tests, Lint, and Coverage report use this command: pytest --pylint --cov
+2. To run tests, Lint, and Coverage report use this command in Docker terminal: pytest --pylint --cov
 
 .pylintrc is the config for pylint .coveragerc is the config for coverage setup.py is a config file for pytest
 
