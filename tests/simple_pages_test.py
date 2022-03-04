@@ -4,11 +4,12 @@ def test_request_main_menu_links(client):
     """This tests the navbar links"""
     response = client.get("/")
     assert response.status_code == 200
+    assert b'<a class="nav-link" href="/">Home</a>' in response.data
     assert b'<a class="nav-link" href="/about">About</a>' in response.data
-    assert b'<a class="nav-link" href="/page1">Page 1</a>' in response.data
-    assert b'<a class="nav-link" href="/page2">Page 2</a>' in response.data
-    assert b'<a class="nav-link" href="/page3">Page 3</a>' in response.data
-    assert b'<a class="nav-link" href="/page4">Page 4</a>' in response.data
+    assert b'<a class="nav-link" href="/git">Git</a>' in response.data
+    assert b'<a class="nav-link" href="/docker">Docker</a>' in response.data
+    assert b'<a class="nav-link" href="/python">Python/Flask</a>' in response.data
+    assert b'<a class="nav-link" href="/cicd">CI/CD</a>' in response.data
 
 def test_request_index(client):
     """This tests the index page"""
