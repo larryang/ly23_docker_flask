@@ -25,28 +25,28 @@ def test_request_about(client):
     assert b"software engineer" in response.data
 
 def test_request_git(client):
-    """This tests /git"""
+    """This tests git page"""
     response = client.get("/git")
     assert response.status_code == 200
     assert b"Using Git" in response.data
 
-def test_request_page2(client):
-    """This tests page2"""
-    response = client.get("/page2")
+def test_request_docker(client):
+    """This tests docker page"""
+    response = client.get("/docker")
     assert response.status_code == 200
-    assert b"Page 2" in response.data
+    assert b"Using Docker" in response.data
 
-def test_request_page3(client):
-    """This tests page3"""
-    response = client.get("/page3")
+def test_request_python(client):
+    """This tests python and flask page"""
+    response = client.get("/python")
     assert response.status_code == 200
-    assert b"Page 3" in response.data
+    assert b"Using Python and Flask" in response.data
 
-def test_request_page4(client):
-    """This tests page 4"""
-    response = client.get("/page4")
+def test_request_cicd(client):
+    """This tests CI/CD page """
+    response = client.get("/cicd")
     assert response.status_code == 200
-    assert b"Page 4" in response.data
+    assert b"Implementing Continuous Integration and Continuous Deployment" in response.data
 
 def test_request_page_not_found(client):
     """This tests page 5"""
