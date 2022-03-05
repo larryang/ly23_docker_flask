@@ -15,19 +15,20 @@ def test_request_index(client):
     """This tests the index page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b"LY23 Bootstrap Index Webpage" in response.data
+    assert b"LY23 IS601 2022 Spring Project 1" in response.data
 
 def test_request_about(client):
     """This tests the about page"""
     response = client.get("/about")
     assert response.status_code == 200
     assert b"About LY23 Page" in response.data
+    assert b"software engineer" in response.data
 
-def test_request_page1(client):
-    """This tests page1"""
-    response = client.get("/page1")
+def test_request_git(client):
+    """This tests /git"""
+    response = client.get("/git")
     assert response.status_code == 200
-    assert b"Page 1" in response.data
+    assert b"Using Git" in response.data
 
 def test_request_page2(client):
     """This tests page2"""
