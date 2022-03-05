@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row">
-    <h1>About LY23 Page</h1>
-</div>
-<div class="row">
-<div class="col-2">
-    <img src="{{ url_for('static', filename='images/ly_simpsons.jpg') }}" class="img-fluid"
-         alt="LY23's Caricature Portrait"/></div>
-<div class="col">
-    <p>
-        Hello, I'm a student at NJIT working on a Graduate Certificate in Software Engineering. I have a BS in EECS
-        and an MS in Computer Engineering, and am currently working as a software engineer mostly doing C/C++
-        programming in embedded systems in wireless telecommunications.
-    </p>
-</div>
-</div>
+
+ <div class="container">
+     <div class="row">
+         <h1>About LY23 Page</h1>
+     </div>
+     <div class="row">
+         <div class="col-2">
+             <img src="{{ url_for('static', filename='images/ly_simpsons.jpg') }}" class="img-fluid"
+                  alt="LY23's Caricature Portrait"/></div>
+         <div class="col">
+             <p>
+                 Hello, I'm a student at NJIT working on a Graduate Certificate in Software Engineering. I have a BS in
+                 EECS
+                 and an MS in Computer Engineering, and am currently working as a software engineer mostly doing C/C++
+                 programming in embedded systems in wireless telecommunications.
+             </p>
+         </div>
+     </div>
+ </div>
 {% endblock %}
