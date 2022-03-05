@@ -4,47 +4,50 @@ def test_request_main_menu_links(client):
     """This tests the navbar links"""
     response = client.get("/")
     assert response.status_code == 200
+    assert b'<a class="nav-link" href="/">Home</a>' in response.data
     assert b'<a class="nav-link" href="/about">About</a>' in response.data
-    assert b'<a class="nav-link" href="/page1">Page 1</a>' in response.data
-    assert b'<a class="nav-link" href="/page2">Page 2</a>' in response.data
-    assert b'<a class="nav-link" href="/page3">Page 3</a>' in response.data
-    assert b'<a class="nav-link" href="/page4">Page 4</a>' in response.data
+    assert b'<a class="nav-link" href="/git">Git</a>' in response.data
+    assert b'<a class="nav-link" href="/docker">Docker</a>' in response.data
+    assert b'<a class="nav-link" href="/python">Python/Flask</a>' in response.data
+    assert b'<a class="nav-link" href="/cicd">CI/CD</a>' in response.data
 
 def test_request_index(client):
     """This tests the index page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b"LY23 Bootstrap Index Webpage" in response.data
+    assert b"LY23 IS601 2022 Spring Project 1" in response.data
+    assert b"carousel" in response.data
 
 def test_request_about(client):
     """This tests the about page"""
     response = client.get("/about")
     assert response.status_code == 200
     assert b"About LY23 Page" in response.data
+    assert b"software engineer" in response.data
 
-def test_request_page1(client):
-    """This tests page1"""
-    response = client.get("/page1")
+def test_request_git(client):
+    """This tests git page"""
+    response = client.get("/git")
     assert response.status_code == 200
-    assert b"Page 1" in response.data
+    assert b"Using Git" in response.data
 
-def test_request_page2(client):
-    """This tests page2"""
-    response = client.get("/page2")
+def test_request_docker(client):
+    """This tests docker page"""
+    response = client.get("/docker")
     assert response.status_code == 200
-    assert b"Page 2" in response.data
+    assert b"Using Docker" in response.data
 
-def test_request_page3(client):
-    """This tests page3"""
-    response = client.get("/page3")
+def test_request_python(client):
+    """This tests python and flask page"""
+    response = client.get("/python")
     assert response.status_code == 200
-    assert b"Page 3" in response.data
+    assert b"Using Python and Flask" in response.data
 
-def test_request_page4(client):
-    """This tests page 4"""
-    response = client.get("/page4")
+def test_request_cicd(client):
+    """This tests CI/CD page """
+    response = client.get("/cicd")
     assert response.status_code == 200
-    assert b"Page 4" in response.data
+    assert b"Implementing Continuous Integration and Continuous Deployment" in response.data
 
 def test_request_page_not_found(client):
     """This tests page 5"""

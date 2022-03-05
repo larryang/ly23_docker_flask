@@ -1,51 +1,99 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>LY23 Bootstrap Index Webpage</h1>
 
-<div class="row">
-    <img src="{{ url_for('static', filename='images/sample.jpeg') }}" class="img-fluid"
-        alt="sample main splash image" />
-</div>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Home"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="About"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Git"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Docker"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4"
+                    aria-label="Python and Flask"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="CI/CD"></button>
+        </div>
+        <div class="carousel-inner p-3 mb-2 bg-secondary bg-gradient text-white">
+            <div class="carousel-item active">
+                <div class="text-center">
+                    <a href="/about">
+                <img src="{{ url_for('static', filename='images/ly_simpsons.png') }}" class="img-fluid"
+                  class="rounded" alt="LY23's Caricature Portrait" />
+                        </a>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>About Me</h4>
+                    <p>LY23 Background and Info</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="text-center">
+                    <a href="/git">
+                    <img src="{{ url_for('static', filename='images/Git-Logo-1788C.png') }}" class="img-fluid"
+                         class="rounded" alt="Git logo" />
+                    <!-- image source https://git-scm.com/downloads/logos -->
+                        </a>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>Git</h4>
+                    <p>Git Info and Usage</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="text-center">
+                    <a href="/docker">
+                    <img src="{{ url_for('static', filename='images/Moby-logo.png') }}" class="img-fluid"
+                         class="rounded" alt="Docker Moby logo" height="300px"/>
+                    <!-- image source https://www.docker.com/company/newsroom/media-resources -->
+                    </a>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>Docker</h4>
+                    <p>Docker Info and Usage</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+              <div class="text-center grey">
+                  <a href="/python">
+                    <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}" class="img-fluid"
+                         class="rounded" alt="Python logo"/>
+                    <!-- image source https://www.python.org/community/logos/ -->
+                  </a>
+                </div>
+                <div class="carousel-caption d-none d-md-block text-primary">
+                    <h4><a href="/python">Python and Flask</a></h4>
+                    <p><a href="/python">Python and Flask Info and Usage</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#777"/>
+                </svg>
+                <div class="carousel-caption d-none d-md-block text-info bg-dark ">
+                    <h4><a href="/cicd">CI/CD</a></h4>
+                    <p><a href="/cicd">Implementation of Continuous Integration/Continuous Deployment</a></p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
-<h2>Intro Text</h2>
-<div class="row">
-    <div class="col">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim praesent elementum
-            facilisis leo. Ornare massa eget egestas purus. Pharetra vel turpis nunc eget. Urna
-            molestie at elementum eu. Nulla facilisi nullam vehicula ipsum. Eros in cursus turpis massa tincidunt.
-            Feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Tortor at auctor urna nunc id.
-            Erat nam at lectus urna duis convallis.
-        </p>
+    <div class="container">
+
+        <h1>LY23 IS601 2022 Spring Project 1</h1>
+
+        <h2>Technology Webpage</h2>
+
+        <p>This technology webpage serves as both a demonstration, documentation, and reference for the various
+            technologies
+            that were used to produce this webpage.</p>
     </div>
-    <div class="col">
-        <p>
-            Eget arcu dictum varius duis at consectetur lorem. Risus viverra adipiscing at in tellus integer.
-            Tincidunt praesent
-            semper feugiat nibh sed. Elementum tempus egestas sed sed risus pretium quam. Id aliquet lectus
-            proin nibh nisl
-            condimentum id. Auctor eu augue ut lectus arcu. Varius vel pharetra vel turpis nunc eget. Vel turpis
-            nunc eget lorem
-            dolor sed viverra ipsum. Ultricies tristique nulla aliquet enim tortor at. Euismod lacinia at quis
-            risus sed
-            vulputate odio. Vel elit scelerisque mauris pellentesque. Nunc sed id semper risus in hendrerit
-            gravida.
-        </p>
-    </div>
-    <div class="col">
-        <p>
-            Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Vel eros donec ac odio tempor
-            orci
-            dapibus ultrices in. Molestie nunc non blandit massa enim nec dui nunc mattis. Leo urna molestie at
-            elementum eu
-            facilisis sed odio morbi. At tempor commodo ullamcorper a lacus vestibulum sed arcu non. Habitasse platea
-            dictumst
-            vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Sodales neque sodales ut etiam. Et leo duis
-            ut
-            diam
-            quam nulla porttitor. Cras sed felis eget velit aliquet sagittis id consectetur.
-        </p>
-    </div>
-</div>
+
 {% endblock %}
