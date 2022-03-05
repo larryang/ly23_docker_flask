@@ -15,8 +15,10 @@
         <div class="carousel-inner p-3 mb-2 bg-secondary bg-gradient text-white">
             <div class="carousel-item active">
                 <div class="text-center">
+                    <a href="/about">
                 <img src="{{ url_for('static', filename='images/ly_simpsons.png') }}" class="img-fluid"
-                  class="rounded" alt="LY23's Caricature Portrait" height="300"/>
+                  class="rounded" alt="LY23's Caricature Portrait" />
+                        </a>
                 </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h4>About Me</h4>
@@ -25,9 +27,11 @@
             </div>
             <div class="carousel-item">
                 <div class="text-center">
+                    <a href="/git">
                     <img src="{{ url_for('static', filename='images/Git-Logo-1788C.png') }}" class="img-fluid"
-                         class="rounded" alt="Git logo" height="300px"/>
+                         class="rounded" alt="Git logo" />
                     <!-- image source https://git-scm.com/downloads/logos -->
+                        </a>
                 </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h4>Git</h4>
@@ -36,9 +40,11 @@
             </div>
             <div class="carousel-item">
                 <div class="text-center">
+                    <a href="/docker">
                     <img src="{{ url_for('static', filename='images/Moby-logo.png') }}" class="img-fluid"
                          class="rounded" alt="Docker Moby logo" height="300px"/>
                     <!-- image source https://www.docker.com/company/newsroom/media-resources -->
+                    </a>
                 </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h4>Docker</h4>
@@ -47,13 +53,15 @@
             </div>
             <div class="carousel-item">
               <div class="text-center grey">
+                  <a href="/python">
                     <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}" class="img-fluid"
                          class="rounded" alt="Python logo"/>
                     <!-- image source https://www.python.org/community/logos/ -->
+                  </a>
                 </div>
                 <div class="carousel-caption d-none d-md-block text-primary">
-                    <h4>Python and Flask</h4>
-                    <p>Python and Flask Info and Usage</p>
+                    <h4><a href="/python">Python and Flask</a></h4>
+                    <p><a href="/python">Python and Flask Info and Usage</a></p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -61,9 +69,9 @@
                      aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                     <rect width="100%" height="100%" fill="#777"/>
                 </svg>
-                <div class="carousel-caption d-none d-md-block">
-                    <h4>CI/CD</h4>
-                    <p>Implementation of Continuous Integration/Continuous Deployment</p>
+                <div class="carousel-caption d-none d-md-block text-info bg-dark ">
+                    <h4><a href="/cicd">CI/CD</a></h4>
+                    <p><a href="/cicd">Implementation of Continuous Integration/Continuous Deployment</a></p>
                 </div>
             </div>
         </div>
