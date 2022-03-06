@@ -1,6 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
+    <div class="container">
         <h1>Using Python and Flask</h1>
+
+        <p>This webpage project use <a href="https://www.python.org/">Python</a> as the main programming langauge.
+            On top of that it uses <a hre="https://palletsprojects.com/p/flask/">Flask</a> as the main web application
+            framework.</p>
+
+        <h2>Project Testing</h2>
+
+        <p>The project and Flask use the <a href="https://docs.pytest.org/en/7.0.x/">pytest</a> testing framework. The
+            <a href="https://github.com/larryang/ly23_docker_flask/blob/master/tests/simple_pages_test.py">example
+                test functions from simple_pages_test.py</a> below test the navigation bar links, and also test
+            whether a page exists and has identifying
+            text.</p>
+
+        <pre><code>
+def test_request_main_menu_links(client):
+    """This tests the navbar links"""
+    response = client.get("/")
+    assert response.status_code == 200
+    assert b'&lt;a class="nav-link" href="/">Home&lt;/a>' in response.data
+    assert b'&lt;a class="nav-link" href="/about">About&lt;/a>' in response.data
+    assert b'&lt;a class="nav-link" href="/git">Git&lt;/a>' in response.data
+    assert b'&lt;a class="nav-link" href="/docker">Docker&lt;/a>' in response.data
+    assert b'&lt;a class="nav-link" href="/python">Python/Flask&lt;/a>' in response.data
+    assert b'&lt;a class="nav-link" href="/cicd">CI/CD&lt;/a>' in response.data
+
+def test_request_index(client):
+    """This tests the index page"""
+    response = client.get("/")
+    assert response.status_code == 200
+    assert b"LY23 IS601 2022 Spring Project 1" in response.data
+    assert b"carousel" in response.data
+
+def test_request_git(client):
+    """This tests git page"""
+    response = client.get("/git")
+    assert response.status_code == 200
+    assert b"Using Git" in response.data
+        </code></pre>
+
+    <h2>Test Driven</h2>
+
+    <p>I first created the basic unit test which checked whether the page existed while looking for basic text strings.
+        Then I passed the test by creating the simple pages. Creating the simple page consisted of copying and renaming
+        existing page as a template, renaming it, and updating the page text.
+    </p>
+    <p>Testing is done by using a container terminal, and running: <strong># pytest --pylint --cov</strong>.
+    The test was to be run everytime before staging a commit.
+    </p>
+
+    <h2>Flask and Python Links</h2>
+    <ul>
+        <li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> - main tool documentation page</li>
+        <li><A href="https://flask.palletsprojects.com/en/2.0.x/blueprints/">Flask Blueprint documentation</a></li>
+        <li><a href="https://flask.palletsprojects.com/en/2.0.x/testing/">Testing Flask Applications</a> - Flask
+            testing utilities, based on pytest
+        </li>
+    </ul>
     </div>
 {% endblock %}
