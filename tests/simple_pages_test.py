@@ -47,7 +47,7 @@ def test_request_cicd(client):
     """This tests CI/CD page """
     response = client.get("/cicd")
     assert response.status_code == 200
-    assert b"Implementing Continuous Integration and Continuous Deployment" in response.data
+    assert b"Implementing Continuous Integration and Continuous Delivery" in response.data
 
 def test_request_page_not_found(client):
     """This tests page 5"""
