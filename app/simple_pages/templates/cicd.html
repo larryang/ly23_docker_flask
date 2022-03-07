@@ -1,6 +1,101 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        <h1>Implementing Continuous Integration and Continuous Deployment</h1>
+    <div class="container">
+        <h1>Implementing Continuous Integration and Continuous Delivery</h1>
+
+        <p>The goal of Continuous Integration and Continuous Delivery is to get feedback on
+            product development as fast as possible. The earlier bugs are caught and resolved,
+            both money and time are saved. With smaller iterations, it's also possible to
+            debug by comparing smaller changes between versions that worked and that are broken.
+            Ideally:</p>
+
+        <figure>
+            <blockquote class="blockquote">
+                <p>Any individual developer's work is only a few hours away from a shared project
+                    state and can be integrated back into that state in minutes. Any integration errors are found
+                    rapidly and can be fixed rapidly.</p>
+                <p>This contrast isn't the result of an expensive and complex tool. The essence of it lies in the
+                    simple practice of everyone on the team integrating frequently, usually daily, against a controlled
+                    source code repository. </p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                Martin Fowler in <cite title="Continuous Integration">Continuous Integration</cite>
+            </figcaption>
+        </figure>
+
+        <p>What is the main characteristics of doing this?</p>
+        <ul>
+            <li>Use source code management system (or version control system) to make a working copy</li>
+            <li>Assumes a high degree of automated tests</li>
+            <li>Automated build and automated tests on working copy and development machine</li>
+            <li>Gate keeping on successful build and successful tests, push to mainline</li>
+            <li>Change to mainline prompts integration machine to do automated build and test</li>
+        </ul>
+
+        <p>The result behaviour should be:</p>
+
+        <figure>
+            <blockquote class="blockquote">
+                <p>In a Continuous Integration environment you should never have a failed integration build stay failed
+                    for long. A good team should have many correct builds a day. Bad builds do occur from time to time,
+                    but should be quickly fixed.
+                </p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                Martin Fowler in <cite title="Continuous Integration">Continuous Integration</cite>
+            </figcaption>
+        </figure>
+
+        <p>What are the software tools used to do this? GitHub. GitHub is the main Continuous Integration
+            and Continuous Deployment server, as well as the controlled source code repository. GitHub fulfills
+            the below criteria by Martin Fowler in bold text, with some other tools mentioned.</p>
+
+        <ul>
+            <li><strong>Maintain a Single Source Repository</strong>GitHub is the Single Source Repository. DockerHub
+                tracks the development environment (container images).</li>
+            <li><strong>Automate the Build</strong>GitHub has been configured to automate the build, deploying to
+                Heroku.</li>
+            <li><strong>Make Your Build Self-Testing</strong>GitHub runs the Flask pytests</li>
+            <li><strong>Everyone Commits To the Mainline Every Day</strong> - no tool needed (by convention/habit)</li>
+            <li><strong>Every Commit Should Build the Mainline on an Integration Machine</strong> GitHub kicks off
+                when pull request has been made to main master branch.</li>
+            <li><strong>Fix Broken Builds Immediately</strong> Currently by convention. GitHub Code Owner should refuse
+                pull requests until build is fixed.</li>
+            <li><strong>Keep the Build Fast</strong> - currently not applicable, though sometimes Heroku can be slow</li>
+            <li><strong>Test in a Clone of the Production Environment</strong> GitHub uses a
+                <a href="https://ly23-dev.herokuapp.com/">Heroku development server</a>
+            </li>
+            <li><strong>Make it Easy for Anyone to Get the Latest Executable</strong> anyone can access the
+                <a href="https://ly23-prod.herokuapp.com/">Heroku production server</a></li>
+            <li><strong>Everyone can see what's happening</strong> GitHub project page has buttons for Production and
+                Development workflows.</li>
+            <li><strong>Automate Deployment</strong> GitHub automatically deploys to Heroku production server upon
+                commit to main master branch.</li>
+        </ul>
+
+        <h2>Workflow Walk-through</h2>
+
+        <p>For this project, after cloning the source from GitHub and making the modifications, how does CI/CD kick
+            in? This is done via two Workflow configuration files, dev.yml and prod.yml </p>
+
+        <p>The first file, dev.yml,configures the GitHub Development Workflow. It is triggered by a pull request to the
+            main master branch. Pull requests are required to modify the master branch, since GitHub has
+            been configured via a Branch protection rule so the master branch can only be modified by pull requests.
+            The pull requests kicks off:</p>
+        <ul>
+            <li>Automated build and pytests</li>
+            <li>Automated deployment to parallel Heroku development server</li>
+            <li>Requires review by Code Owner(s) by requiring approval before merge</li>
+        </ul>
+
+        <p>The second file, prod.yml, configures the GitHub Production Workflow. It is triggered by a commit to the main
+        master branch. The commit kicks off:</p>
+        <ul>
+            <li>Automated pytests</li>
+            <li>Automated Docker container build and push the image to Docker Hub</li>
+            <li>Automated deployment to Heroku production server</li>
+        </ul>
+
+
     </div>
 {% endblock %}
