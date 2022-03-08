@@ -73,27 +73,28 @@
                 commit to main master branch.</li>
         </ul>
 
-        <h2>Workflow Walk-through</h2>
+        <h2>GitHub Actions Workflow Walk-through</h2>
 
         <p>For this project, after cloning the source from GitHub and making the modifications, how does CI/CD kick
-            in? This is done via two Workflow configuration files, dev.yml and prod.yml </p>
+            in? This is done though GitHub Actions, GitHub's CI/CD platform. There are two GitHub workflow
+            configuration files in the .github/workflows directory, dev.yml and prod.yml.</p>
 
         <p>The first file, dev.yml,configures the GitHub Development Workflow. It is triggered by a pull request to the
-            main master branch. Pull requests are required to modify the master branch, since GitHub has
+            main/master branch. Pull requests are required to modify the master branch, since GitHub has
             been configured via a Branch protection rule so the master branch can only be modified by pull requests.
             The pull requests kicks off:</p>
         <ul>
-            <li>Automated build and pytests</li>
-            <li>Automated deployment to parallel Heroku development server</li>
+            <li>Automated test job: run_pytest</li>
+            <li>Automated deployment to parallel Heroku development server job: deploy_heroku</li>
             <li>Requires review by Code Owner(s) by requiring approval before merge</li>
         </ul>
 
         <p>The second file, prod.yml, configures the GitHub Production Workflow. It is triggered by a commit to the main
         master branch. The commit kicks off:</p>
         <ul>
-            <li>Automated pytests</li>
-            <li>Automated Docker container build and push the image to Docker Hub</li>
-            <li>Automated deployment to Heroku production server</li>
+            <li>Automated test job: runtest</li>
+            <li>Automated Docker container build and push image to Docker Hub job: build-container</li>
+            <li>Automated deployment to Heroku production server job: deploy</li>
         </ul>
 
 
