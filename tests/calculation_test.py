@@ -1,5 +1,5 @@
-"""Testing Calculator Calculations"""
-from calculator.calculations import Addition, Subtraction, Multiplcation
+"""Testing Calculator Calculation class"""
+from calculator.calculation import Addition, Subtraction, Multiplication
 
 
 def arg_list():
@@ -34,11 +34,11 @@ def test_subtraction_result():
 
 def test_multiplication_factory():
     """Test Multiplcation class"""
-    calculation = Multiplcation.create(arg_list())
-    assert isinstance(calculation, Multiplcation)
+    calculation = Multiplication.create(arg_list())
+    assert isinstance(calculation, Multiplication)
 
 
 def test_multiplcation_result():
     """Test Multiplcation result"""
-    calculation = Multiplcation.create(arg_list())
+    calculation = Multiplication.create(arg_list())
     assert calculation.get_result() == -10

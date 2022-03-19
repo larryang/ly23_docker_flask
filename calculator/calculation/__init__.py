@@ -44,7 +44,7 @@ class Subtraction(Calculation):
         return result
 
 
-class Multiplcation(Calculation):
+class Multiplication(Calculation):
     """Multiplcation class"""
 
     def get_result(self):

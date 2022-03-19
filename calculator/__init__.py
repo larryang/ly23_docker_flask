@@ -1,8 +1,7 @@
 """ This is the Calculator Class"""
 from ast import Add
 from os import stat
-from calculator.calculations import Addition, Subtraction, Multiplcation
-from calculator.operations import Multiplication
+from calculator.calculation import Addition, Subtraction, Multiplication
 
 class Calculator:
 
@@ -18,6 +17,6 @@ class Calculator:
 
     @staticmethod
     def multiply(args):
-        """ This is the get result method"""
+        """ This is the multiply method"""
         return Multiplication.create(args).get_result()
 
