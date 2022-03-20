@@ -26,3 +26,5 @@ When creating a pull request to merge a branch to master, GitHub will deploy to 
 * https://flask-user.readthedocs.io/en/latest/basic_app.html
 * https://hackersandslackers.com/flask-application-factory/
 * https://suryasankar.medium.com/a-basic-app-factory-pattern-for-production-ready-websites-using-flask-and-sqlalchemy-dbb891cdf69f
+* https://refactoring.guru/replace-conditional-with-polymorphism
+* https://refactoring.guru/design-patterns

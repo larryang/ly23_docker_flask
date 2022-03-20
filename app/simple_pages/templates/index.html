@@ -4,7 +4,7 @@
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-                    aria-label="Home"></button>
+            aria-label="Home"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="About"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Git"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Docker"></button>
@@ -16,7 +16,7 @@
             <div class="carousel-item active">
                 <div class="text-center">
                     <a href="/about">
-                <img src="{{ url_for('static', filename='images/ly_simpsons.png') }}" class="img-fluid"
+                <img src="{{ url_for('static', filename='images/ly_simpsons.png') }}" class="carousel-img-height"
                   class="rounded" alt="LY23's Caricature Portrait" />
                         </a>
                 </div>
@@ -28,7 +28,7 @@
             <div class="carousel-item">
                 <div class="text-center">
                     <a href="/git">
-                    <img src="{{ url_for('static', filename='images/Git-Logo-1788C.png') }}" class="img-fluid"
+                    <img src="{{ url_for('static', filename='images/Git-Logo-1788C.png') }}" class="carousel-img-height"
                          class="rounded" alt="Git logo" />
                     <!-- image source https://git-scm.com/downloads/logos -->
                         </a>
@@ -41,7 +41,7 @@
             <div class="carousel-item">
                 <div class="text-center">
                     <a href="/docker">
-                    <img src="{{ url_for('static', filename='images/Moby-logo.png') }}" class="img-fluid"
+                    <img src="{{ url_for('static', filename='images/Moby-logo.png') }}" class="carousel-img-height"
                          class="rounded" alt="Docker Moby logo" height="300px"/>
                     <!-- image source https://www.docker.com/company/newsroom/media-resources -->
                     </a>
@@ -54,7 +54,7 @@
             <div class="carousel-item">
               <div class="text-center grey">
                   <a href="/python">
-                    <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}" class="img-fluid"
+                    <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}" class="carousel-img-height"
                          class="rounded" alt="Python logo"/>
                     <!-- image source https://www.python.org/community/logos/ -->
                   </a>
@@ -65,13 +65,17 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="#777"/>
-                </svg>
-                <div class="carousel-caption d-none d-md-block text-info bg-dark ">
-                    <h4><a href="/cicd">CI/CD</a></h4>
-                    <p><a href="/cicd">Implementation of Continuous Integration/Continuous Delivery</a></p>
+                <div class="text-center grey">
+                    <a href="/cicd">
+                      <img src="{{ url_for('static', filename='images/ci_cd.png') }}" class="carousel-img-height"
+                           class="rounded" alt="CI/CD loop"/>
+                      <!-- image source https://blog.gds-gov.tech/that-ci-cd-thing-principles-implementation-tools-aa8e77f9a350
+                            under Creative Commons -->
+                    </a>
+                  </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>CI/CD</h4>
+                    <p>Implementation of Continuous Integration/Continuous Delivery</p>
                 </div>
             </div>
         </div>

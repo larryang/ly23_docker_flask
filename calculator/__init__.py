@@ -1,20 +1,22 @@
 """ This is the Calculator Class"""
-
+from ast import Add
+from os import stat
+from calculator.calculation import Addition, Subtraction, Multiplication
 
 class Calculator:
-    """ This is the default result property"""
-    result = 0
 
-    def add(self, value_1):
+    @staticmethod
+    def add(args):
         """ This is the add method"""
-        self.result = self.result + value_1
-        return self.result
+        return Addition.create(args).get_result()
 
-    def subtract(self, value_1):
+    @staticmethod
+    def subtract(args):
         """ This is the subtract method"""
-        self.result = self.result - value_1
-        return self.result
+        return Subtraction.create(args).get_result()
 
-    def get_result(self):
-        """ This is the get result method"""
-        return self.result
+    @staticmethod
+    def multiply(args):
+        """ This is the multiply method"""
+        return Multiplication.create(args).get_result()
+
