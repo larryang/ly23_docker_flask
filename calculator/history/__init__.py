@@ -11,6 +11,11 @@ class Calculations:
         return len(Calculations.history)
 
     @staticmethod
+    def clear_history():
+        """Clear history list"""
+        Calculations.history.clear()
+
+    @staticmethod
     def add_calculation(calculation):
         """Add a Calculation to history and returns updated count"""
         Calculations.history.append(calculation)
