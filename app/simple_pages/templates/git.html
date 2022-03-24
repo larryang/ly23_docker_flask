@@ -1,46 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
+<div class="container"><div class="row">
+    <div class="col">
+        <h1>Using Git</h1>
 
-    <h1>Using Git</h1>
+        <p><a href="https://git-scm.com/">Git</a> is the project's distributed version control system (VCS). It is an
+            Open
+            Source Software (OSS) from the people behind Linux, and it uses the
+            <a href=https://opensource.org/licenses/GPL-2.0">GPL-2.0</a> license. Even though it is a distributed VCS,
+            this
+            project uses <a href="https://github.com">GitHub</a> as the main repository.
+        </p>
 
-    <p><a href="https://git-scm.com/">Git</a> is the project's distributed version control system (VCS). It is an Open
-        Source Software (OSS) from the people behind Linux, and it uses the
-        <a href=https://opensource.org/licenses/GPL-2.0">GPL-2.0</a> license. Even though it is a distributed VCS, this
-        project uses <a href="https://github.com">GitHub</a> as the main repository.</p>
+        <h2>Git Terminology and Concepts</h2>
 
-    <h2>Git Terminology and Concepts</h2>
-
-    <dl>
-        <dt>Branch</dt>
-        <dd>A separate isolated workspace or working copy that allows a developer to diverge from the main or master
-            source, allowing changes to be made without affecting others working on the same source. The top level parent
-            branch is usually referred to "master" or "main". This concept is common to version control
-            systems.
-        </dd>
-        <dt>Merge</dt>
-        <dd>Used to put the changes from one branch to another branch. Usually, the merge requires
-            a multiple file comparison between the source, destination, and final version. If the source branch has
-            its parent on the destination branch, and the source branch has not changed, this is called a
-            "fast-forward", as this just involves moving the branch tip/pointer.
-        </dd>
-        <dt>Commit</dt>
-        <dd>Each version or "save" of the branch. Each commit is identified with a cryptographic hash, and
-            corresponds with the more general idea of a changeset, the smallest unit of changes in a version
-            control system. A commit is created after the changes have been added via "add" command, then "commit"
-            command.
-        </dd>
-        <dt>Tag</dt>
-        <dd>A unique text label applied to a commit. Multiple labels may be applied to a commit.</dd>
-        <dt>Repository</dt>
-        <dd>An set of local files in a directory, that tracks the changes, versions, branches, tags, and associated
-            metadata. Everyone has a local repository, i.e. a local isolated copy of this information. To share
-            changes, repositories can be shared and synchronized over a network, by commands such as "push",
-            "pull", and "fetch". Since git is a distributed system, a central repository does not exist, but can be
-            enforced via convention. Such a central repository can be provided as a service. This project uses
-            <a href="https://github.com/">GitHub</a>, with the main repository at
-            <a href="https://github.com/larryang/ly23_docker_flask">
-                https://github.com/larryang/ly23_docker_flask</a></dd>
-    </dl>
+        <dl>
+            <dt>Branch</dt>
+            <dd>A separate isolated workspace or working copy that allows a developer to diverge from the main or master
+                source, allowing changes to be made without affecting others working on the same source. The top level
+                parent
+                branch is usually referred to "master" or "main". This concept is common to version control
+                systems.
+            </dd>
+            <dt>Merge</dt>
+            <dd>Used to put the changes from one branch to another branch. Usually, the merge requires
+                a multiple file comparison between the source, destination, and final version. If the source branch has
+                its parent on the destination branch, and the source branch has not changed, this is called a
+                "fast-forward", as this just involves moving the branch tip/pointer.
+            </dd>
+            <dt>Commit</dt>
+            <dd>Each version or "save" of the branch. Each commit is identified with a cryptographic hash, and
+                corresponds with the more general idea of a changeset, the smallest unit of changes in a version
+                control system. A commit is created after the changes have been added via "add" command, then "commit"
+                command.
+            </dd>
+            <dt>Tag</dt>
+            <dd>A unique text label applied to a commit. Multiple labels may be applied to a commit.</dd>
+            <dt>Repository</dt>
+            <dd>An set of local files in a directory, that tracks the changes, versions, branches, tags, and associated
+                metadata. Everyone has a local repository, i.e. a local isolated copy of this information. To share
+                changes, repositories can be shared and synchronized over a network, by commands such as "push",
+                "pull", and "fetch". Since git is a distributed system, a central repository does not exist, but can be
+                enforced via convention. Such a central repository can be provided as a service. This project uses
+                <a href="https://github.com/">GitHub</a>, with the main repository at
+                <a href="https://github.com/larryang/ly23_docker_flask">
+                    https://github.com/larryang/ly23_docker_flask</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="col-3">
+        <a href="https://git-scm.com/">
+        <img src="{{ url_for('static', filename='images/Git-Logo-1788C.png') }}" class="img-fluid" class="rounded"
+            alt="Git logo" /></a>
+        <!-- image source https://git-scm.com/downloads/logos -->
+    </div>
+</div>
 </div>
 {% endblock %}
