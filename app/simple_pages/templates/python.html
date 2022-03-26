@@ -1,125 +1,141 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
-        <h1>Using Python and Flask</h1>
-
-        <p>This webpage project use <a href="https://www.python.org/">Python</a> as the main programming langauge.
-            On top of that it uses <a href="https://palletsprojects.com/p/flask/">Flask</a> as the main web application
-            framework.</p>
-
-        <h2>Project Testing</h2>
-
-        <p>The project and Flask use the <a href="https://docs.pytest.org/en/7.0.x/">pytest</a> testing framework. The
-            <a href="https://github.com/larryang/ly23_docker_flask/blob/master/tests/simple_pages_test.py">example
-                test functions from simple_pages_test.py</a> below test the navigation bar links, and also test
-            whether a page exists and has identifying
-            text.</p>
-
-        <pre><code>
-def test_request_main_menu_links(client):
-    """This tests the navbar links"""
-    response = client.get("/")
-    assert response.status_code == 200
-    assert b'&lt;a class="nav-link" href="/">Home&lt;/a>' in response.data
-    assert b'&lt;a class="nav-link" href="/about">About&lt;/a>' in response.data
-    assert b'&lt;a class="nav-link" href="/git">Git&lt;/a>' in response.data
-    assert b'&lt;a class="nav-link" href="/docker">Docker&lt;/a>' in response.data
-    assert b'&lt;a class="nav-link" href="/python">Python/Flask&lt;/a>' in response.data
-    assert b'&lt;a class="nav-link" href="/cicd">CI/CD&lt;/a>' in response.data
-
-def test_request_index(client):
-    """This tests the index page"""
-    response = client.get("/")
-    assert response.status_code == 200
-    assert b"LY23 IS601 2022 Spring Project 1" in response.data
-    assert b"carousel" in response.data
-
-def test_request_git(client):
-    """This tests git page"""
-    response = client.get("/git")
-    assert response.status_code == 200
-    assert b"Using Git" in response.data
-        </code></pre>
-
-        <h2>Test Driven</h2>
-
-        <p>I first created the basic unit test which checked whether the page existed while looking for basic text
-            strings.
-            Then I passed the test by creating the simple pages. Creating the simple page consisted of copying and
-            renaming
-            existing page as a template, renaming it, and updating the page text.
-        </p>
-        <p>Testing is done by using a container terminal, and running: <strong># pytest --pylint --cov</strong>.
-            The test was to be run everytime before staging a commit.
-        </p>
-
-        <h2>Flask and Python Links</h2>
-        <ul>
-            <li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> - main tool documentation page</li>
-            <li><A href="https://flask.palletsprojects.com/en/2.0.x/blueprints/">Flask Blueprint documentation</a></li>
-            <li><a href="https://flask.palletsprojects.com/en/2.0.x/testing/">Testing Flask Applications</a> - Flask
-                testing utilities, based on pytest
-            </li>
-        </ul>
-
-        <h2>File and Folder Outline</h2>
-        <ul>
-            <li>Project Root Folder: <a href="https://github.com/larryang/ly23_docker_flask">ly23_docker_flask</a></li>
-            <li>docker-compose.yml - file to configure the application to run locally, not on a Heroku/gunicorn server</li>
-            <li>Dockerfile - file that defines the image and tells Docker how to build the image</li>
-            <li>heroku.yml - file that defines the Heroku app</li>
-            <li>pytest.ini - general pytest configuration file</li>
-            <li>readme.md - documentation file for GitHub</li>
-            <li>requirements.txt - specifies what is needed to setup Python, used by Dockerfile</li>
-            <li>setup.py - used for later calculator project</li>
-            <li>.github/ - directory for GitHub
-                <ul>
-                    <li>workflows/ - directory of GitHub workflow configurations
-                        <ul>
-                            <li>dev.yml - GitHub development workflow configuration. configures and installs python
-                                dependencies, runs pytest, and deploys to Heroku
-                            </li>
-                            <li>prod.yml - GitHub production workflow configuration. configures and installs python
-                                dependencies, runs pytest, builds the container and push to Dockerhub,
-                                and deploys to Heroku
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>app/ - directory for main application
-                <ul>
-                    <li>__init__.py - Python instantiation, imports Flask and simple_pages (see simple_pages/
-                        directory, defines methods
-                    </li>
-                    <li>run.py - runs method defined in __init__.py</li>
-                    <li>context_processors/ - emtpy/unused directory</li>
-                    <li>simple_pages/ - directory to store web pages
-                        <ul>
-                            <li>__init__.py - Python instantiation, configures Flask Blueprint by associated routes
-                                and templates/pages. Indicates which folders are templates and static assets located.
-                            </li>
-                            <li>templates/ - where the Flask Blueprint webpages (*.html formatted with Jinja2) are
-                                stored</li>
-                        </ul>
-                    </li>
-                    <li>static/ - location of static assets for Flask Blueprint (see __init__.py)
-                    <ul>
-                        <li>css/ - location of CSS files</li>
-                        <li>images/ - location of image files (JPEG, PNG, etc.)</li>
-                        <li>js/ - location of Javascript files</li>
-                    </ul></li>
-                    <li>templates/ - location of Flask Blueprint templates formatted with Jinja2 (*.html)</li>
-                </ul>
-            </li>
-            <li>calculator/ - unused, for future calculator app project, only has __init__.py</li>
-            <li>tests/ - Flask tests folder
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Using Python and Flask</h1>
+    
+            <p>This webpage project use <a href="https://www.python.org/">Python</a> as the main programming langauge.
+                On top of that it uses <a href="https://palletsprojects.com/p/flask/">Flask</a> as the main web application
+                framework.</p>
+    
+            <hr>
+            <h2>Project Testing</h2>
+    
+            <p>The project and Flask use the <a href="https://docs.pytest.org/en/7.0.x/">pytest</a> testing framework. The
+                <a href="https://github.com/larryang/ly23_docker_flask/blob/master/tests/simple_pages_test.py">example
+                    test functions from simple_pages_test.py</a> below test the navigation bar links, and also test
+                whether a page exists and has identifying
+                text.
+            </p>
+    
+            <pre><code>
+    def test_request_main_menu_links(client):
+        """This tests the navbar links"""
+        response = client.get("/")
+        assert response.status_code == 200
+        assert b'&lt;a class="nav-link" href="/">Home&lt;/a>' in response.data
+        assert b'&lt;a class="nav-link" href="/about">About&lt;/a>' in response.data
+        assert b'&lt;a class="nav-link" href="/git">Git&lt;/a>' in response.data
+        assert b'&lt;a class="nav-link" href="/docker">Docker&lt;/a>' in response.data
+        assert b'&lt;a class="nav-link" href="/python">Python/Flask&lt;/a>' in response.data
+        assert b'&lt;a class="nav-link" href="/cicd">CI/CD&lt;/a>' in response.data
+    
+    def test_request_index(client):
+        """This tests the index page"""
+        response = client.get("/")
+        assert response.status_code == 200
+        assert b"LY23 IS601 2022 Spring Project 1" in response.data
+        assert b"carousel" in response.data
+    
+    def test_request_git(client):
+        """This tests git page"""
+        response = client.get("/git")
+        assert response.status_code == 200
+        assert b"Using Git" in response.data
+            </code></pre>
+    
+            <hr>
+            <h2>Test Driven</h2>
+    
+            <p>I first created the basic unit test which checked whether the page existed while looking for basic text
+                strings.
+                Then I passed the test by creating the simple pages. Creating the simple page consisted of copying and
+                renaming
+                existing page as a template, renaming it, and updating the page text.
+            </p>
+            <p>Testing is done by using a container terminal, and running: <strong># pytest --pylint --cov</strong>.
+                The test was to be run everytime before staging a commit.
+            </p>
+    
+            <hr>
+            <h2>Flask and Python Links</h2>
             <ul>
-                <li>__init__.py - Python instantiator</li>
-                <li>calculate_test.py - tests for future calculator app project</li>
-                <li>conftest.py - Flask test configuration setup</li>
-                <li>simple_pages_test.py - tests for simple_pages (most of this webpage project)</li>
-            </ul></li>
-        </ul>
+                <li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> - main tool documentation page</li>
+                <li><A href="https://flask.palletsprojects.com/en/2.0.x/blueprints/">Flask Blueprint documentation</a></li>
+                <li><a href="https://flask.palletsprojects.com/en/2.0.x/testing/">Testing Flask Applications</a> - Flask
+                    testing utilities, based on pytest
+                </li>
+            </ul>
+    
+            <hr>
+            <h2>File and Folder Outline</h2>
+            <ul>
+                <li>Project Root Folder: <a href="https://github.com/larryang/ly23_docker_flask">ly23_docker_flask</a></li>
+                <li>docker-compose.yml - file to configure the application to run locally, not on a Heroku/gunicorn server
+                </li>
+                <li>Dockerfile - file that defines the image and tells Docker how to build the image</li>
+                <li>heroku.yml - file that defines the Heroku app</li>
+                <li>pytest.ini - general pytest configuration file</li>
+                <li>readme.md - documentation file for GitHub</li>
+                <li>requirements.txt - specifies what is needed to setup Python, used by Dockerfile</li>
+                <li>setup.py - used for later calculator project</li>
+                <li>.github/ - directory for GitHub
+                    <ul>
+                        <li>workflows/ - directory of GitHub workflow configurations
+                            <ul>
+                                <li>dev.yml - GitHub development workflow configuration. configures and installs python
+                                    dependencies, runs pytest, and deploys to Heroku
+                                </li>
+                                <li>prod.yml - GitHub production workflow configuration. configures and installs python
+                                    dependencies, runs pytest, builds the container and push to Dockerhub,
+                                    and deploys to Heroku
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>app/ - directory for main application
+                    <ul>
+                        <li>__init__.py - Python instantiation, imports Flask and simple_pages (see simple_pages/
+                            directory, defines methods
+                        </li>
+                        <li>run.py - runs method defined in __init__.py</li>
+                        <li>context_processors/ - emtpy/unused directory</li>
+                        <li>simple_pages/ - directory to store web pages
+                            <ul>
+                                <li>__init__.py - Python instantiation, configures Flask Blueprint by associated routes
+                                    and templates/pages. Indicates which folders are templates and static assets located.
+                                </li>
+                                <li>templates/ - where the Flask Blueprint webpages (*.html formatted with Jinja2) are
+                                    stored</li>
+                            </ul>
+                        </li>
+                        <li>static/ - location of static assets for Flask Blueprint (see __init__.py)
+                            <ul>
+                                <li>css/ - location of CSS files</li>
+                                <li>images/ - location of image files (JPEG, PNG, etc.)</li>
+                                <li>js/ - location of Javascript files</li>
+                            </ul>
+                        </li>
+                        <li>templates/ - location of Flask Blueprint templates formatted with Jinja2 (*.html)</li>
+                    </ul>
+                </li>
+                <li>calculator/ - unused, for future calculator app project, only has __init__.py</li>
+                <li>tests/ - Flask tests folder
+                    <ul>
+                        <li>__init__.py - Python instantiator</li>
+                        <li>calculate_test.py - tests for future calculator app project</li>
+                        <li>conftest.py - Flask test configuration setup</li>
+                        <li>simple_pages_test.py - tests for simple_pages (most of this webpage project)</li>
+                    </ul>
+                </li>
+            </ul>
+            <hr>
+        </div>
+        <div class="col-2">
+            <img src="{{ url_for('static', filename='images/Moby-logo.png') }}" class="img-fluid" alt="Docker Moby Logo" />
+        </div>
     </div>
+</div>   
 {% endblock %}
