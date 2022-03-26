@@ -17,6 +17,40 @@ class Calculations:
 
     @staticmethod
     def add_calculation(calculation):
-        """Add a Calculation to history and returns updated count"""
+        """Add a Calculation object to history and returns updated count"""
         Calculations.history.append(calculation)
         return Calculations.count_history()
+
+    @staticmethod
+    def get_calculation(index):
+        """Get Calculation object at history index"""
+        return Calculations.history[index]
+
+    @staticmethod
+    def get_calculation_result(index):
+        """Get Calculation result at history index"""
+        return Calculations.history[index].get_result()
+
+    @staticmethod
+    def get_first_calculation():
+        """Get first Calculation object"""
+        # convenience function
+        return Calculations.history[0]
+
+    @staticmethod
+    def get_first_calculation_result():
+        """Get first Calculation result"""
+        # convenience function
+        return Calculations.history[0].get_result()
+
+    @staticmethod
+    def get_last_calculation():
+        """Get last Calculation object"""
+        # convenience function
+        return Calculations.history[-1]
+
+    @staticmethod
+    def get_last_calculation_result():
+        """Get last Calculation result"""
+        # convenience function
+        return Calculations.history[-1].get_result()
