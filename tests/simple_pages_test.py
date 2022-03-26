@@ -10,6 +10,10 @@ def test_request_main_menu_links(client):
     assert b'<a class="nav-link" href="/docker">Docker</a>' in response.data
     assert b'<a class="nav-link" href="/python">Python/Flask</a>' in response.data
     assert b'<a class="nav-link" href="/cicd">CI/CD</a>' in response.data
+    assert b'<a class="nav-link" href="/python_dev">Python Dev</a>' in response.data
+    assert b'<a class="nav-link" href="/aaa_testing">AAA Testing</a>' in response.data
+    assert b'<a class="nav-link" href="/oop">Object Orientated Programming</a>' in response.data
+    assert b'<a class="nav-link" href="/solid">SOLID/Design Pattern</a>' in response.data
 
 def test_request_index(client):
     """This tests the index page"""
@@ -48,6 +52,31 @@ def test_request_cicd(client):
     response = client.get("/cicd")
     assert response.status_code == 200
     assert b"Implementing Continuous Integration and Continuous Delivery" in response.data
+
+def test_request_python_dev(client):
+    """This tests Python Development page"""
+    # for pylint & others
+    response = client.get("/python_dev")
+    assert response.status_code == 200
+    assert b"Python Development" in response.data
+
+def test_request_aaa(client):
+    """"This tests AAA Testing page"""
+    response = client.get("/aaa_testing")
+    assert response.status_code == 200
+    assert b"Arrange, Act, Assert Testing" in response.data
+
+def test_request_oop(client):
+    """This tests OOP page"""
+    response = client.get("/oop")
+    assert response.status_code == 200
+    assert b"Object Orientated Programming" in response.data
+
+def test_request_solid(client):
+    """This tests SOLID and Design Patterns page"""
+    response = client.get("/solid")
+    assert response.status_code == 200
+    assert b"SOLID and Design Patterns" in response.data
 
 def test_request_page_not_found(client):
     """This tests page 5"""

@@ -11,6 +11,14 @@
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4"
                     aria-label="Python and Flask"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="CI/CD"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="6"
+            aria-label="Python Development"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="7"
+            aria-label="AAA Testing"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="8"
+            aria-label="Object Orientated Programming"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="9"
+            aria-label="SOLID/Design Pattern"></button>
         </div>
         <div class="carousel-inner p-3 mb-2 bg-secondary bg-gradient text-white">
             <div class="carousel-item active">
@@ -78,6 +86,45 @@
                     <p>Implementation of Continuous Integration/Continuous Delivery</p>
                 </div>
             </div>
+            <div class="carousel-item">
+                <div class="text-center grey">
+                    <a href="/python_dev">
+                      <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}" class="carousel-img-height"
+                           class="rounded" alt="Python logo"/>
+                      <!-- image source https://www.python.org/community/logos/ -->
+                    </a>
+                  </div>
+                  <div class="carousel-caption d-none d-md-block text-primary">
+                      <h4><a href="/python_dev">Python Development</a></h4>
+                      <p><a href="/python_dev">Tools: pylint, pep8, pytest, etc.</a></p>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                <div class="text-center grey">
+                    <a href="/aaa_testing">
+                      <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}" class="carousel-img-height"
+                           class="rounded" alt="Unit Testing Icon"/>
+                      <!-- image source https://www.python.org/community/logos/ -->
+                    </a>
+                  </div>
+                  <div class="carousel-caption d-none d-md-block text-primary">
+                      <h4><a href="/aaa_testing">AAA Testing</a></h4>
+                      <p><a href="/aaa_testing">Arrange, Act, Assert Testing/a></p>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                <div class="text-center grey">
+                    <a href="/python_dev">
+                      <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}" class="carousel-img-height"
+                           class="rounded" alt="Python logo"/>
+                      <!-- image source https://www.python.org/community/logos/ -->
+                    </a>
+                  </div>
+                  <div class="carousel-caption d-none d-md-block text-primary">
+                      <h4><a href="/python_dev">Python Development</a></h4>
+                      <p><a href="/python_dev">Tools: pylint, pep8, pytest, etc.</a></p>
+                  </div>
+              </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
