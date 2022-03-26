@@ -1,55 +1,75 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-        <h1>Using Docker</h1>
-
-        <p><a href="https://www.docker.com/">Docker</a> is used to provide application isolation as well as
-            <a href=https://hub.docker.com/repository/docker/ly23/ly23-docker-flask">configuration management</a>
-            for both development and deployment. It can be thought of as a lightweight virtual
-            machine, however that is misleading because that glosses over significant technical differences, including
-            but not limited to how resources are shared, and limitations on what operating systems can be used.</p>
-
-        <h2>Docker Terminology and Concepts</h2>
-
-        <dl>
-            <dt>Container</dt>
-            <dd><p>An isolated grouping or "unit" of software that provides the environment for an application,
-                including the application itself. Containers run on a single host as a group of processes. Containers
-                are isolated from each other, which means they have their own processes, memory, and file resources.
-                When a container misbehaves, it should not directly affect other containers running on the same
-                host.</p>
-            </dd>
-            <dt>Image</dt>
-            <dd>A snapshot or version of a container. The container image packages up the application and its
-                dependencies, including everything needed to run and to develop the application. This may include code,
-                system tools, libraries, configuration files, etc. The image is the actual object that is
-                deployed/executed. It is what goes into version control.</dd>
-        </dl>
-
-        <h2>Project Docker Information</h2>
-
-        <p>This project uses the repository at
-        <a href=https://hub.docker.com/repository/docker/ly23/ly23-docker-flask">
-            https://hub.docker.com/repository/docker/ly23/ly23-docker-flask</a>. With this project, I usually use
-            <strong># docker compose up --build</strong> to start it up. To run unit tests or debug,
-            I run <strong># docker exec -it ly23_docker_flask-flask-1 /bin/bash</strong> to attached an interactive
-            terminal to the container.</p>
-
-        <h2>Common Docker Commands</h2>
-
-        <p>Examples of common Docker commands I use.</p>
-
-        <ul>
-            <li><strong>docker --help</strong>: access the command line help page. Add --help after any command
-               to get more detailed information on it.</li>
-            <li><strong>docker compose up --build</strong>: how I build and start the project</li>
-            <li><strong>docker run -itp 80:80 ubuntu</strong>: start unbuntu image, map port 80 to 80, and attach
-                interactive terminal</li>
-            <li><strong>docker ps</strong>: list containers, add a -a to include stopped containers</li>
-            <li><strong>docker start [container id]</strong>: start a container</li>
-            <li><strong>docker stop [container id]</strong>: stop a container</li>
-            <li><strong>docker kill [container id]</strong>: kill a container</li>
-            <li><strong>docker rm [container id]</strong>: rm a container</li>
-        </ul>
+        <div class="row">
+            <div class="col">
+                <h1>Using Docker</h1>
+        
+                <p><a href="https://www.docker.com/">Docker</a> is used to provide application isolation as well as
+                    <a href=https://hub.docker.com/repository/docker/ly23/ly23-docker-flask">configuration management</a>
+                    for both development and deployment. It can be thought of as a lightweight virtual
+                    machine, however that is misleading because that glosses over significant technical differences, including
+                    but not limited to how resources are shared, and limitations on what operating systems can be used.
+                </p>
+        
+                <hr>
+                <h2>Docker Terminology and Concepts</h2>
+        
+                <dl>
+                    <dt>Container</dt>
+                    <dd>
+                        <p>An isolated grouping or "unit" of software that provides the environment for an application,
+                            including the application itself. Containers run on a single host as a group of processes.
+                            Containers
+                            are isolated from each other, which means they have their own processes, memory, and file resources.
+                            When a container misbehaves, it should not directly affect other containers running on the same
+                            host.</p>
+                    </dd>
+                    <dt>Image</dt>
+                    <dd>A snapshot or version of a container. The container image packages up the application and its
+                        dependencies, including everything needed to run and to develop the application. This may include code,
+                        system tools, libraries, configuration files, etc. The image is the actual object that is
+                        deployed/executed. It is what goes into version control.</dd>
+                </dl>
+        
+                <hr>
+                <h2>Project Docker Information</h2>
+        
+                <p>This project uses the repository at
+                    <a href=https://hub.docker.com/repository/docker/ly23/ly23-docker-flask">
+                        https://hub.docker.com/repository/docker/ly23/ly23-docker-flask</a>. With this project, I usually use
+                    <strong># docker compose up --build</strong> to start it up. To run unit tests or debug,
+                    I run <strong># docker exec -it ly23_docker_flask-flask-1 /bin/bash</strong> to attached an interactive
+                    terminal to the container.
+                </p>
+        
+                <hr>
+                <h2>Common Docker Commands</h2>
+        
+                <p>Examples of common Docker commands I use.</p>
+        
+                <ul>
+                    <li><strong>docker --help</strong>: access the command line help page. Add --help after any command
+                        to get more detailed information on it.</li>
+                    <li><strong>docker compose up --build</strong>: how I build and start the project</li>
+                    <li><strong>docker run -itp 80:80 ubuntu</strong>: start unbuntu image, map port 80 to 80, and attach
+                        interactive terminal</li>
+                    <li><strong>docker ps</strong>: list containers, add a -a to include stopped containers</li>
+                    <li><strong>docker start [container id]</strong>: start a container</li>
+                    <li><strong>docker stop [container id]</strong>: stop a container</li>
+                    <li><strong>docker kill [container id]</strong>: kill a container</li>
+                    <li><strong>docker rm [container id]</strong>: rm a container</li>
+                </ul>    
+                
+                <hr>
+            </div>
+            <div class="col-2">
+                <a href="https://www.docker.com/">
+                    <img src="{{ url_for('static', filename='images/Moby-logo.png') }}" class="img-fluid"
+                         class="rounded" alt="Docker Moby logo" />
+                    <!-- image source https://www.docker.com/company/newsroom/media-resources -->
+                </a>
+            </div>
+        </div>
     </div>
 {% endblock %}
