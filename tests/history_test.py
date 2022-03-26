@@ -91,3 +91,30 @@ def test_get_first_calculation_result(clear_calculations_fixture,
     """Test getting the first Calculation result"""
     # pylint: disable=unused-argument,redefined-outer-name
     assert Calculations.get_first_calculation_result() == 3.25
+
+
+test_values = [ 2.5, 1, 8 ]
+
+
+def test_add_addition_calculation(clear_calculations_fixture):
+    """Test directly adding an Addition Calculation"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    count = Calculations.count_history()
+    assert Calculations.add_addition_calculation(test_values) == count + 1
+    assert Calculations.get_last_calculation_result() == 11.5
+
+
+def test_add_subtraction_calculation(clear_calculations_fixture):
+    """Test directly adding a Subtraction Calculation"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    count = Calculations.count_history()
+    assert Calculations.add_subtraction_calculation(test_values) == count + 1
+    assert Calculations.get_last_calculation_result() == -11.5
+
+
+def test_multplication_calculation(clear_calculations_fixture):
+    """Test directly adding an Addition Calculation"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    count = Calculations.count_history()
+    assert Calculations.add_multiplication_calculation(test_values) == count + 1
+    assert Calculations.get_last_calculation_result() == 20
