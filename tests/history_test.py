@@ -93,6 +93,7 @@ def test_get_first_calculation_result(clear_calculations_fixture,
     assert Calculations.get_first_calculation_result() == 3.25
 
 
+# Arrange values for convenience functions to directly add Calculation object
 test_values = [ 2.5, 1, 8 ]
 
 
