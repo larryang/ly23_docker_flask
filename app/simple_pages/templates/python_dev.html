@@ -5,18 +5,70 @@
 <div class="row">
     <div class="col">
         <h1>Python Development</h1>
-        <p>Information on developing for python. Description and usage of various tools to enforce quality
-            and testing.
+        <p>Information on developing for <a href="/python">python</a>. Description and usage of various tools
+            to enforce quality
+            and testing. The tools listed in this page help to ensure quality of the code, and implement
+            concepts and processes for Python software development (such as <a href="/cicd">CI/CD</a> and 
+            <a href="/aaa_testing">AAA testing</a>).
         </p>
         <ul>
-            <li>pylint</li>
-            <li>pep8</li>
-            <li>pytest</li>
+            <li><a href="https://pylint.pycqa.org/en/latest/">pylint</a> - static analysis tool</li>
+            <li><a href="https://peps.python.org/pep-0008/">pep8</a> - style guide for Python Code</li>
+            <li><a href="https://pytest.org/">pytest</a> - Python test framework </li>
         </ul>
+        <hr>
+
+        <h2>pylint</h2>
+        <p><a href="https://pylint.pycqa.org/en/latest/">pylint</a> is a static analysis tool, i.e. it checks
+            the source code for without executing the code. It's looking for common programming errors,
+            suspicious code, etc. It is executed everytime as part of the <a href="/cicd">CI/CD</a> pipeline,
+            and any issues found will cause the flagged as an error that should be corrected.
+            It is also <a href="https://code.visualstudio.com/docs/python/linting">enabled in the Visual Code
+            editor</a>, and executed everytime the file is saved.
+        </p>
+        <figure class="figure">
+            <img src="{{ url_for('static', filename='images/vscode_use_pylint.png') }}"
+             class="figure-img img-fluid rounded" alt="Screenshot of VS Code Using pylint">
+            <figcaption class="figure-caption text-center">Visual Studio Code Pylint setting</figcaption>
+          </figure>
+        <hr>
+
+        <h2>pep8</h2>
+        <p><a href="https://peps.python.org/pep-0008/">pep8</a> is the official Pyhton style guide.
+            It makes the code style consistent, easier to read and maintain by humans. Things like
+            alignment, variable naming, spacing, comment style, line length are enforced. It is enforced
+            through pylint in <a href="/cicd">CI/CD</a> and also 
+            <a href="https://code.visualstudio.com/docs/python/editing">enabled
+            in the Visual Code editor</a>.
+        </p>
+        <figure class="figure">
+            <img src="{{ url_for('static', filename='images/vscode_pep8.png') }}"
+             class="figure-img img-fluid rounded" alt="Screenshot of VS Code Using autopep8">
+            <figcaption class="figure-caption text-center">Visual Studio Code Python Formatting setting</figcaption>
+          </figure>
+        <hr>
+
+        <h2>pytest</h2>
+        <p><a href="https://pytest.org/">pytest</a> is the Python test framework. It implements the
+            <a href="/aaa_testing">Arange, Act, Assert Testing</a>, and is executed everytime
+            in the CI/CD pipeline. More detail on how pytest can be found on the <a href="/aaa_testing">
+            AAA Testing</a> information page of this website.
+        </p>
+        <p>pytest also performs pylint analysis, and provides analysis for code coverage. Example output
+            can be seen below.
+        </p>
+        <figure class="figure">
+            <img src="{{ url_for('static', filename='images/pytest_output.png') }}"
+             class="figure-img img-fluid rounded" alt="Screenshot of pytest output">
+            <figcaption class="figure-caption text-center">pytest results and Analysis</figcaption>
+          </figure>
+        <hr>
+
     </div>
 
     <div class="col-2">
-
+        <img src="{{ url_for('static', filename='images/python-logo-master-v3-TM.png') }}"
+            class="img-fluid" alt="Python Logo" />
     </div>
 </div>
 </div>
