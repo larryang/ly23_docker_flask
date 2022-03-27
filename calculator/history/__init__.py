@@ -2,7 +2,7 @@
 from calculator.calculation import Addition, Subtraction, Multiplication
 
 class Calculations:
-    """Calculations class manages history state """
+    """Calculations class manages history list """
     history = []
 
     @staticmethod
