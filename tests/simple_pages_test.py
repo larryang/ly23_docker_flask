@@ -10,10 +10,10 @@ def test_request_main_menu_links(client):
     assert b'<a class="nav-link" href="/docker">Docker</a>' in response.data
     assert b'<a class="nav-link" href="/python">Python/Flask</a>' in response.data
     assert b'<a class="nav-link" href="/cicd">CI/CD</a>' in response.data
-    assert b'<a class="nav-link" href="/python_dev">Python Dev</a>' in response.data
-    assert b'<a class="nav-link" href="/aaa_testing">AAA Testing</a>' in response.data
-    assert b'<a class="nav-link" href="/oop">Object Orientated Programming</a>' in response.data
-    assert b'<a class="nav-link" href="/solid">SOLID/Design Pattern</a>' in response.data
+    assert b'<a class="nav-link" href="/python_dev">PythonDev</a>' in response.data
+    assert b'<a class="nav-link" href="/aaa_testing">AAATesting</a>' in response.data
+    assert b'<a class="nav-link" href="/oop">OOP</a>' in response.data
+    assert b'<a class="nav-link" href="/solid">SOLID/DesignPatterns</a>' in response.data
 
 def test_request_index(client):
     """This tests the index page"""
