@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+<div class="row">
+    <div class="col"><h1>Object Orientated Programming</h1>
+    
+    <p>Information on oop (Object Orientated Programming). Define and illustrate OOP concepts via
+        project code design and code. This will be largely an glossary, with example illustrated
+        from this <a href="https://github.com/larryang/ly23_docker_flask">project's</a> source
+        code.
+    </p>
+    <hr>
+    
+    <h2 id="FourPrinciples"><a href="https://www.freecodecamp.org/news/object-oriented-programming-concepts-21bb035f7260/">
+            Four Principles of OOP</a></h2>
+    
+    <figure class="figure">
+        <img src="{{ url_for('static', filename='images/calculation_class_diagram.png') }}"
+            class="figure-img img-fluid rounded" alt="Calculation class diagram">
+        <figcaption class="figure-caption text-left">Calculation Class Diagram</figcaption>
+    </figure>
+    
+    <dl class="row">
+        <dt class="col-sm-3">encapsulation</dt>
+        <dd class="col-sm-9">A wrapper/bag/collection of properties and <b>methods</b> collected in a
+            <b>class</b>. The class may keep methods, properties, and state information private - i.e.
+            unaccesiable from other classes, in contrast to those that are public. The class
+            Calculation is diagrammed in the above Calculation Class Diagram, with the
+            <a href="https://github.com/larryang/ly23_docker_flask/blob/master/calculator/calculation/__init__.py">
+                source code accessible in GitHub</a>.
+        </dd>
+        <dt class="col-sm-3">abstraction</dt>
+        <dd class="col-sm-9">Hiding the low level implementation details, while exposing
+            high level methods for using the class. For the class
+            Calculation, the internal representation of numbers is hidden, as well as the mechanism for
+            converting and sanitizing the input numbers.
+        </dd>
+        <dt class="col-sm-3">inheritance</dt>
+        <dd class="col-sm-9">A class (child) can derive itself from another class (parent), reusing
+            the same properties and methods, while adding additional properties and methods. In the
+            example class diagram above, Addition, Subtraction, and Multiplication are all children
+            of the parent class, Calculation, forming a hiearchy. All those children classes have
+            the same properties and methods, and actually implement the <code>get_result()</code>
+            method.
+        </dd>
+        <dt class="col-sm-3">polymorphism</dt>
+        <dd class="col-sm-9">Multiple classes, often related by inheritance, can be used the same way
+            by having the same interface, i.e. the same method names with the same arguements. So,
+            each class can be substituted for another, without changing code - while the behavior may
+            be different. In the above Calculation class diagram, Addition, Subtraction, and
+            have the same interfaces. They all inherit from Calculation, and implement method
+            get_result(), and can be <em>interchangebly</em> swapped while performing different operations.
+        </dd>
+    </dl>
+    <hr>
+    
+    <h2>Object Orientated Python Glossary</h2>
+    <dl class="row">
+        <dt class="col-sm-3">class</dt>
+        <dd class="col-sm-9">A prototype collection of properties and methods, the blueprint which
+            from objects are created from. Used for <b>encapsulation</b> and <b>abstraction</b>.
+            Example code below is from:
+            <a href="https://github.com/larryang/ly23_docker_flask/blob/master/calculator/calculation/__init__.py">
+                ./calculator/calculation/__init__.py</a>
+            <pre><code>
+    class Calculation:
+    """ abstract base class """
+    # pylint: disable=too-few-public-methods
+    
+    def __init__(self, args_tuple: tuple):
+        """ constructor """
+        self._values = Calculation._convert_args_to_float_tuple(args_tuple)
+    
+    @classmethod
+    def create(cls, args_tuple: tuple):
+        """ factory method """
+        return cls(args_tuple)
+    
+    @staticmethod
+    def _convert_args_to_float_tuple(args_tuple: tuple):
+        """ sanitize input to float tuple """
+        float_list = []
+        for item in args_tuple:
+            float_list.append(float(item))
+        return tuple(float_list)
+    
+    @classmethod
+    @abstractmethod
+    def get_result(cls):
+        """Get result of calculation"""        
+                </code></pre>
+        </dd>
+        <dt class="col-sm-3">constructor</dt>
+        <dd class="col-sm-9">When an <b>object</b> is created, a special method is called that
+            initializes the object (hence, during constructing the object). In Python, this is
+            <code>__init__</code>, which can be seen in the example code above for
+            <code>class Calculation</code>.
+        </dd>
+        <dt class="col-sm-3">instantiation</dt>
+        <dd class="col-sm-9">Creating an <b>object</b> from a class. It will its own state, resources,
+            memory - a concrete thing created of the class. It is what is done by the <b>constructor</b>
+            and the <code>Calculation.create()</code> method.</dd>
+        <dt class="col-sm-3">instance method</dt>
+        <dd class="col-sm-9">Just a regular method, which may access and modify the object properties.
+            The example above is the <code>__init__</code> method.
+        </dd>
+        <dt class="col-sm-3">instance property</dt>
+        <dd class="col-sm-9">A property whose value is unique to the object/instance.
+        </dd>
+        <dt class="col-sm-3">fixture</dt>
+        <dd class="col-sm-9">During testing, a fixture is a function/method run before test, usually to
+            initialize the test or perform shared functionality before the test. Also see
+            <a href="/aaa_testing">AAA Testing</a>, which uses <b>pytest</b> fixtures.
+        </dd>
+        <dt class="col-sm-3">namespace</dt>
+        <dd class="col-sm-9">
+            <p>A namespace has all the names of objects, symbols, classes, etc.
+                A metaphor is that a namespace is like a file folder. Each filename is unique in the folder.
+                However, different folders may have the same filename (which may be the same or different file).
+                Python allows an alias to rename if the same name when importing from other namespaces.</p>
+            <p>There are <a href="https://realpython.com/python-namespaces-scope/">four namespaces</a>:
+            </p>
+            <ul>
+                <li>Built-In - used for built-in objects (defined by langauge), scope is life of interpreter</li>
+                <li>Global - for global declarations, and imported namespaces, created by main program and
+                    exists for the life of the interpreter
+                </li>
+                <li>Enclosing - a function's namespace that includes another function, created when function
+                    is executed and exists until function terminates
+                </li>
+                <li>Local - a function's namespace that is nested inside a function, reated when function
+                    is executed and exists until function terminates</li>
+            </ul>
+        </dd>
+        <dt class="col-sm-3">object</dt>
+        <dd class="col-sm-9">A concrete or unique thing created from a <b>class</b>. Created during
+            <b>instantiation</b> by a <b>constructor</b>.
+        </dd>
+        <dt class="col-sm-3">static</dt>
+        <dd class="col-sm-9">A keyword, when applied to <b>static method</b> or <b>static property</b>
+            signals the developers intent for the method or property. For properties, it applies to
+            how the memory is allocated. For methods, it applies to what properties it can or can't access.
+        </dd>
+        <dt class="col-sm-3">static method</dt>
+        <dd class="col-sm-9">A method (annotaed by <code>@staticmethod</code>) that can not access
+            <code>self</code> or <code>cls</code>, so it cannot directly access
+            <b>instance</b> or <b>class</b> private properties/state. See annotated <code>Calculation</code>
+            example above. The static method takes an input tuple, and returns a float tuple. This keeps
+            the method within a particular namespace.
+        </dd>
+        <dt class="col-sm-3">static property</dt>
+        <dd class="col-sm-9">A class property or variable, accessible by all instances.
+            An example in <code>Calculations.history</code>, as seen in:
+            <a href="https://github.com/kaw393939/docker_flask/blob/calculation_history/calculator/history/__init__.py">
+                calculator/history__init__.py</a>.
+            <pre><code>
+    class Calculations:
+        """Calculations class manages history list """
+        history = []
+                </code></pre>
+        </dd>
+        <dt class="col-sm-3">type cast</dt>
+        <dd class="col-sm-9">When converting from one type to another. For example, in the above
+            <code>Calculation</code> class example code, <code>_convert_args_to_float_tuple()</code>
+            explicity coverts each item in the input to a <code>float</code> type.
+        </dd>
+        <dt class="col-sm-3">type hint</dt>
+        <dd class="col-sm-9">Python is an untyped language, however can add an annotation to hint to
+            development tools such as static analysis tools what the type should be. There is an example in the
+            above <code>Calculation</code> class example code, where <code>args_tuple : tuple</code>
+            suggests that the input arguements should be a tuple.
+        </dd>
+        <dt class="col-sm-3">unit test</dt>
+        <dd class="col-sm-9">Testing the smallest individual software component, with minimal inputs and
+            minimal outputs. See <a href="/aaa_testing">AAA Testing</a>. Example can be seen below, from
+            <a href="https://github.com/larryang/ly23_docker_flask/blob/master/tests/operation_test.py">
+                tests/operation_test.py</a>. Each test only tests adding, subtracting, or multiplying
+            two numbers and producing one output.
+            <pre><code>
+    """ test operations Classes """
+    from calculator.operations import Addition, Subtraction, Multiplication
+    
+    def test_calculator_operation_add():
+        """ test addition function """
+        assert Addition.add(1, 1) == 2
+    
+    def test_calculator_operation_subtract():
+        """ test subtraction function """
+        assert Subtraction.subtract(1, 1) == 0
+    
+    def test_calculator_operation_multiply():
+        """ test multiplication operation """
+        assert Multiplication.multiply(1, 1) == 1                
+                </code></pre>
+        </dd>
+    </dl>
+    <hr>
+    </div>
+    
+    <div class="col-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/KP-UML-Generalization-20060325.svg"
+        class="rounded class img-fluid" alt="UML Class Diagram"/>
+  <!-- image source https://commons.wikimedia.org/wiki/File:KP-UML-Generalization-20060325.svg -->
+    </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <h1>SOLID and Design Patterns</h1>
+
+        <p>Information on software design concepts referred to as SOLID and Design Patterns. Will be
+            illustrated with design and code from the project.
+        </p>
+
+        <ul>
+            <li>Single Responsiblity Principle</li>
+            <li>Open Closed Principle</li>
+            <li>Liskov Substituion Principle</li>
+            <li>Interface Segregation Principle</li>
+            <li>Depedency Inversion Principle</li>
+        </ul>
+
+        <p>Design Patterns come from the observation that problems repeat themselves, and reuse design
+            solutions that utilize OOP and SOLID. 
+        </p>
+        <hr>
+
+        <h2>SOLID</h2>
+        <dl class="row">
+            <dt class="col-sm-3">Single Responsiblity Principle</dt>
+            <dd class="col-sm-9">Do one thing, and do one thing only. Example code below, from
+                <a href="https://github.com/larryang/ly23_docker_flask/blob/master/calculator/calculation/__init__.py">
+                source code accessible in GitHub</a>. Each class only does Addition,
+                Substraction, or Multiplication.
+            <pre><code>
+class Addition(Calculation):
+    """Addition class """
+
+    def get_result(self):
+        """Add values and return result"""
+        result = 0.0
+        for value in self.values:
+            result = Add.add(result, value)
+        return result
+
+
+class Subtraction(Calculation):
+    """Subtraction class"""
+
+    def get_result(self):
+        """Subtract values and return result"""
+        result = 0.0
+        for value in self.values:
+            result = Sub.subtract(result, value)
+        return result
+
+
+class Multiplication(Calculation):
+    """Multiplcation class"""
+
+    def get_result(self):
+        """Multiple values and return result"""
+        result = 1.0
+        for value in self.values:
+            result = Mult.multiply(result, value)
+        return result    
+            </code></pre>
+            </dd>
+            <dt class="col-sm-3">Open Closed Principle</dt>
+            <dd class="col-sm-9">A module should be open for extension but
+                closed for modification. This means that the current
+                functionality should be complete and self contained,
+                and further functionality is done by adding  more code,
+                not modifying existing code. For example, use inheritence, 
+                so that no change to interface is needed. Example is for the
+                above code, in that to add math operations like Division,
+                just add another child class.
+            </dd>
+            <dt class="col-sm-3">Liskov Substituion Principle</dt>
+            <dd class="col-sm-9">States that a parent and child should be
+                interchangeable without breaking the program. It does
+                not apply to this calculator application, since the only
+                inheritance is from an abstract class to multiple children.
+            </dd>
+            <dt class="col-sm-3">Interface Segregation Principle</dt>
+            <dd class="col-sm-9">Somewhat similar to OCP, a module should
+                minimze the number of interfaces, so that there are no
+                interfaces it doesn't use. Example code is the same as
+                for OCP.
+            </dd>
+            <dt class="col-sm-3">Depedency Inversion Principle</dt>
+            <dd class="col-sm-9">A higher level class depends on the
+                abstraction of the class rather than the low level
+                details. From 
+                <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">
+                    Wikipedia:</a>
+                <ul>
+                    <li>High-level modules should not import anything
+                        from low-level modules. Both should depend on
+                        abstractions (e.g., interfaces).</li>
+                    <li>Abstractions should not depend on details.
+                        Details (concrete implementations) should depend 
+                        on abstractions.</li>
+                </ul>
+                The <a href="https://github.com/larryang/ly23_docker_flask/blob/master/calculator/history/__init__.py">
+                    <code>Calculations</code> history module</a> depends
+                on the <code>Calculation</code> abstract parent class,
+                instead of <code>Addition</code>, <code><Subtraction</code>,
+                 or <code>Multiplication</code>.
+            </dd>
+        </dl>
+        <hr>
+
+        <h2>Design Patterns</h2>
+        <p>Design Patterns reuse object orientated design approaches
+            and solution template to solve reaccuring problems. It 
+            provides best practices and helps manage complexity. Design
+            patterns are grouped into three categories:
+        </p>
+        <ul>
+            <li>Creational Patterns - creating objects</li>
+            <li>Structural Patterns - combining and using different classes and objects</li>
+            <li>Behavioral Patterns - how objects communication with each other</li>
+        </ul>
+        <p>
+            Two patterns are identified - Factory Method and Command. The
+            <code>Calculation.create</code> method is the Factory Method,
+            and it creates objects that conform to the Command pattern.
+        </p>
+        <hr>
+    </div>
+
+    <div class="col-2">
+        <figure class="figure">
+              <img src="{{ url_for('static', filename='images/noun-pattern-750038.png') }}"
+                   class="rounded figure-img img-fluid" alt="Patterns Icon"/>
+              <!-- image source https://thenounproject.com/icon/pattern-750038/ Basic License -->
+            </figure>
+    </div>
+</div>
+</div>
+
+{% endblock %}
