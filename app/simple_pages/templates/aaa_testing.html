@@ -5,24 +5,125 @@
 <div class="row">
     <div class="col">
         <h1>Arrange, Act, Assert Testing</h1>
-        <p>Information on AAA (Arrange, Act, Assert). Project implements it via
-            <a href="/python_dev#pytest">pytest</a>.
+        <p>Information on AAA (Arrange, Act, Assert). This Project implements this testing pattern
+            via <a href="/python_dev#pytest">pytest</a> for its tests. Testing is 
+            the most critical activity for software development, as that's how it gets verified.
+            Is it doing what it's supposed to, i.e. fit for purpose? Are there side affects?
+            Testing confirms how well the code is understood, since the question of how
+            to test can not be answer if there is no understanding
+            of how and what the software is supposed to do.
         </p>
         <ul>
-            <li>Arrange input, targets, and data (arrange the data)
-            </li>
+            <li>Arrange input, targets, and data (arrange the data)</li>
             <li>Act on the target behavior (perform action)</li>
             <li>Assert is correct (assertion)</li>
         </ul>
-    </div>
-
-    <p>Arrange in operations_test.py with simple python tuple and history_test.py for Calculations using pytest fixtures.
-        <b>Fixtures</b> are used to arrange,
+        <hr>
         
-    </p>
+        <h2>pytest</h2>
+        <p><a href="https://pytest.org/">pytest</a> is the project's Python test framework. It will run
+            all the test scripts located in the
+            <a href="https://github.com/larryang/ly23_docker_flask/tree/master/tests">
+            ./tests directory</a>. Various test scripts from that directory will drawn on
+            for examples for AAA Testing.</a>
+         </p>
+         <p>pytest is run in the projects top level source directory, as shown below:</p>
+<pre><code>
+    root@2991c71c6f86:/home/myuser# ls -l
+    total 28
+    -rw-r--r--  1 root root  519 Feb 28 01:47 Dockerfile
+    drwxr-xr-x 10 root root  320 Mar  5 13:43 app
+    drwxr-xr-x  8 root root  256 Mar 19 20:33 calculator
+    -rw-r--r--  1 root root  233 Feb 28 01:47 docker-compose.yml
+    -rw-r--r--  1 root root   58 Feb 28 01:47 heroku.yml
+    -rw-r--r--  1 root root   71 Feb 28 01:47 pytest.ini
+    -rw-r--r--  1 root root 1433 Mar 11 02:36 readme.md
+    -rw-r--r--  1 root root   98 Feb 28 01:47 requirements.txt
+    -rw-r--r--  1 root root   89 Feb 28 01:47 setup.py
+    drwxr-xr-x 10 root root  320 Mar 27 15:15 tests
+    root@2991c71c6f86:/home/myuser# pytest --pylint --cov    
+</code></pre>
 
-    <div class="col-2">
+        <hr>
+        
+        <h2>AAA Implementation via pytest Examples</h2>
+        <dl class="row">
+            <dt class="col-sm-2">Arrange</dt>
+            <dd class="col-sm-10"><p>Arrange means setting up the inputs for the test, usually data. From
+                this snipped from
+                <a href="https://github.com/larryang/ly23_docker_flask/blob/master/tests/operations_test.py">
+                    tests/operations_test.py</a> below, we can see the data input of [1, 1] used
+                    for <b>unit testing</b> both <code>Addition.add</code> and <code>Substraction.subtract</code>
+            </p>
+            <pre><code>
+values = [1, 1]
 
+def test_calculator_operation_add():
+    """ test addition function """
+    assert Addition.add(values[0], values[1]) == 2
+
+def test_calculator_operation_subtract():
+    """ test subtraction function """
+    assert Subtraction.subtract(values[0], values[1]) == 0
+            </code></pre>
+            <p>Arranging can be done via <b>fixtures</b>, where repetitive actions like intialization
+                or shared data sets can be shared between test cases with less copying and pasting.
+                Below is a <a href="https://github.com/larryang/ly23_docker_flask/blob/master/tests/history_test.py">
+                snippet of code</a> demonstrating the usage of fixtures for initialization. 
+                It clears the <code>Calculations</code> history and initializes with one
+                <code>Addition</code>.
+            </p>
+            <pre><code>
+@pytest.fixture
+def clear_calculations_fixture():
+    """Clear state information for Calculations"""
+    Calculations.clear_history()
+
+
+@pytest.fixture
+def add_addition_calculation_fixture():
+    """Add an Addition Calculation to history"""
+    values = (1.25, 2)
+    count = Calculations.count_history()
+    addition = Addition(values)
+    assert Calculations.add_calculation(addition) == (count + 1)
+
+
+def test_get_calculation_result(clear_calculations_fixture, add_addition_calculation_fixture):
+    """Test getting the calculation result at a particular history index"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    assert Calculations.get_calculation_result(0) == 3.25
+
+
+def test_get_last_calculation_result(clear_calculations_fixture,
+                                     add_multiple_addition_calculations_fixture):
+    """Test getting the last Calculation result"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    assert Calculations.get_last_calculation_result() == 4.75                                               
+            </code></pre>
+            </dd>
+            <dt class="col-sm-2">Act</dt>
+            <dd class="col-sm-10">Act is executing the method/function. In the first example sample
+                code for "Act", this is <code>Addition.add(values[0], values[1])</code> and 
+                <code>Subtraction.subtract(values[0], values[1])</code>.
+            </dd>
+            <dt class="col-sm-2">Assert</dt>
+            <dd class="col-sm-10">Assert is where the output of the execution of the method is
+                checked with the desired result. This is helpfully done with the keyword 
+                <code>assert</code>. In the first example sample code for "Act", it checks
+                if the implementation of addition does give the equivalend of 1 + 1 = 2. </dd>
+        </dl>
+        <hr>
+
+        </div>
+        
+        <div class="col-2">
+            <figure class="figure">
+                <img src="{{ url_for('static', filename='images/noun-unit-testing-4456263.png') }}"
+                class="rounded figure-img img-fluid" alt="Unit Testing Icon"/>
+          <!-- image source https://thenounproject.com/icon/unit-testing-4456263/ Basic License -->
+          <figcaption class="figure-caption">Unit Testing by M. Oki Orlando from NounProject.com</figcaption>
+            </figure>
     </div>
 </div>
 </div>
