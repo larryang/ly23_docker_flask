@@ -19,7 +19,7 @@ def test_request_index(client):
     """This tests the index page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b"LY23 IS601 2022 Spring Project 1" in response.data
+    assert b"LY23 IS601 2022 Spring Project" in response.data
     assert b"carousel" in response.data
 
 def test_request_about(client):
