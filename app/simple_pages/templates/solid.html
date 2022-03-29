@@ -103,7 +103,7 @@ class Multiplication(Calculation):
                 The <a href="https://github.com/larryang/ly23_docker_flask/blob/master/calculator/history/__init__.py">
                     <code>Calculations</code> history module</a> depends
                 on the <code>Calculation</code> abstract parent class,
-                instead of <code>Addition</code>, <code><Subtraction</code>,
+                instead of <code>Addition</code>, <code>Subtraction</code>,
                  or <code>Multiplication</code>.
             </dd>
         </dl>
@@ -121,9 +121,11 @@ class Multiplication(Calculation):
             <li>Behavioral Patterns - how objects communication with each other</li>
         </ul>
         <p>
-            Two patterns are identified - Factory Method and Command. The
-            <code>Calculation.create</code> method is the Factory Method,
-            and it creates objects that conform to the Command pattern.
+            Two patterns are used - <a href="https://refactoring.guru/design-patterns/factory-method">
+            Factory Method</a> and <a href="https://refactoring.guru/design-patterns/command">Command</a>.
+            The <code>Calculation.create</code> method is the Factory Method,
+            and it creates objects that conform to the Command pattern, as the each subclass
+            implements method <code>get_result()</code>.
         </p>
         <hr>
     </div>
